@@ -3,6 +3,8 @@ import { NgModule, Injector } from '@angular/core';
 import {createCustomElement} from '@angular/elements';
 import { PositionComponent } from './position/position.component';
 import { MainAusloserComponent } from './main-ausloser/main-ausloser.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,8 @@ import { MainAusloserComponent } from './main-ausloser/main-ausloser.component';
     MainAusloserComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [MainAusloserComponent],
