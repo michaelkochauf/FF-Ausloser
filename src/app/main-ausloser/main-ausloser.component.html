@@ -1,0 +1,76 @@
+<div>
+    <div class="overlay noselect"
+    [ngStyle]="displaySettings && {'display':'block'}">
+      <div class="overlay-content noselect" 
+      [ngStyle]="{'width':settingsWidth, 'height':settingsHeight}">
+        
+        <div class="overlay-main noselect">
+          <div style="margin-left: 2%;" class="noselect">
+                <div *ngFor="let pst of possibleForSelection"
+                [ngStyle]="{'margin-left':pst.MarginLeft, 'margin-top':pst.MarginTop}"
+                style="position: absolute;"
+                class="noselect">
+                  <div class="noselect">
+                    <div (click)="selectPositionSetting(pst)" class="noselect" style="background:#0c71e4;height: 80px;width: 80px; border-radius: 3rem;text-align: center;line-height: 80px;font-size: 22px;" *ngIf="pst.IsSelected">
+                        {{pst.Name}}
+                    </div>
+                    <div (click)="selectPositionSetting(pst)" class="noselect" style="height: 80px;width: 80px;text-align: center;line-height: 80px;font-size: 22px;background:#cfcfcf;border-radius: 3rem;" *ngIf="!pst.IsSelected">
+                        {{pst.Name}}
+                    </div>
+                  </div>
+                </div> 
+                <input 
+                #reserveLeute 
+                type="number" 
+                placeholder="RES" 
+                class="overlay-input"
+                [ngStyle]="{'margin-left':selectionMarginLeft, 'margin-top':selectionMarginTop}">
+            </div>
+        </div>
+        <br>
+        <table align="center">
+          <tr>
+            <td>
+              <button (click)="saveSettings(reserveLeute.value)" class="button">Schließen</button>
+            </td>
+          </tr>
+        </table>
+        
+      </div>
+    </div>
+  
+    <div class="main-content">
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 33%;">
+                <button (click)="generate()" class="content-button" style="margin-right: 10px;" >Generieren</button>
+            </td>
+            <td style="width: 33%;">
+                <button (click)="clear()" class="content-button" style="margin-right: 10px;" >Clear</button>            
+            </td>
+            <td style="width: 33%;">
+                <button (click)="openSettings()" class="content-button" style="margin-right: 10px;" >Einstellungen</button>            
+            </td>
+        </tr>
+    </table>
+    
+    
+    
+    
+    <br><br> 
+    <div style="text-align: center;">
+
+    
+        <div 
+        [ngStyle]="{'width':positionsContainerWidth}"
+        style="margin:auto; display: inline-flex;">
+            <position *ngFor="let pst of positions"  class="circle"
+            [ngStyle]="{'margin-left':pst.MarginLeft, 'margin-top':pst.MarginTop}"
+            positionName = "{{pst.Name}}">
+            </position>
+        </div>
+    </div>
+        
+    </div>
+  </div>

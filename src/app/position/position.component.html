@@ -1,0 +1,9 @@
+<div>
+    <div (click)="showNumber()" style="background:#A50810;height: 100px;width: 100px; border-radius: 3rem;" *ngIf="!isNumberShown">
+    </div>
+    <div class="noselect" style="height: 100px;width: 100px;text-align: center;line-height: 100px;font-size: 22px;background:#cfcfcf;border-radius: 3rem;" *ngIf="isNumberShown">
+        {{positionName}}
+    </div>
+</div>
+<br>
+
